@@ -136,31 +136,44 @@ void FAST_Implementaion(cv::Mat Image, std::vector<cv::KeyPoint>& keypoints, int
 
 int main(int argc, char** argv) {
 
-    //image file 
-    //char* ImageFile = argv[1];
+    //Image file  
 
+    char* ImageFile = argv[1];
+
+    //OR
+ 
+    //char* ImageFile = "PATH_TO_IMAGE";
+    
     const int kDensity = 20;
-
-    char* ImageFile = "signal-2023-12-14-212155_002.jpeg";
-    //mat objects for storing data 
+    
+    // Mat objects for storing data 
     cv::Mat ImageColor, ImageGrayscale, ImageResult, ImageResultResized;	              
     ImageColor = imread(ImageFile, cv::IMREAD_COLOR);
     ImageGrayscale = imread(ImageFile, cv::IMREAD_GRAYSCALE);
 
+    //Creating vector of Keypoints
     std::vector<cv::KeyPoint> Keypoints;
+
     // Measuring execution time
     auto StartTime = std::chrono::high_resolution_clock::now();
+
     // Calling FAST
     FAST_Implementaion(ImageGrayscale, Keypoints, kDensity);
+
     // Measuring execution time
     auto EndTime = std::chrono::high_resolution_clock::now();
     auto Duration = std::chrono::duration_cast<std::chrono::microseconds>(EndTime - StartTime);
 
     cv::drawKeypoints(ImageColor, Keypoints, ImageResult, cv::Scalar(255, 0, 0));
 
+    // Resizing the image
     ImageScalableResize(800, 600, ImageResult, ImageResultResized);
+
     cv::imshow("FAST Keypoints", ImageResultResized);
+
+    // Writing image to build directory
     cv::imwrite("ResultImage.jpg", ImageResult);
+
     // Displaying the number of points and the time they were found
     std::cout << "Number of keypoints: " << Keypoints.size() << ", Detection time: " << Duration.count() << " microseconds" << std::endl;
     cv::waitKey(0);

@@ -23,8 +23,9 @@ Configure BUILD_SHARED_LIBS and press "Generate"
 2. Build the Project
 After successfully building OpenCV, proceed to build the FAST_KLT project itself.
 ```
-cd FAST_KLT/build
+cd FAST_KLT
+mkdir build
+cd build
 cmake ..
-make
 ```
 This will generate the executable for the FAST_KLT project. Ensure that all dependencies are correctly linked during the build process.

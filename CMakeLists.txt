@@ -2,8 +2,14 @@ cmake_minimum_required(VERSION 3.12)
 project(FASTKLT)
 
 # Create Project
-add_executable( fastklt src/main.cpp )
-
+add_executable( fastklt 
+src/main.cpp 
+src/myalgorithms.cpp
+)
+target_include_directories( fastklt PRIVATE
+  src
+  include
+)
 # Set StartUp Project
 set_property( DIRECTORY PROPERTY VS_STARTUP_PROJECT "fastklt" )
 

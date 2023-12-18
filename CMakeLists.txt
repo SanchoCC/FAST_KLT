@@ -9,10 +9,10 @@ set_property( DIRECTORY PROPERTY VS_STARTUP_PROJECT "fastklt" )
 
 # Find Package
 set( OpenCV_DIR "external/opencv/build" )
+
 option( OpenCV_STATIC OFF )
 find_package( OpenCV REQUIRED )
 
-# Set Static Link Runtime Library
 if( OpenCV_STATIC )
   foreach( flag_var
            CMAKE_C_FLAGS CMAKE_C_FLAGS_DEBUG CMAKE_C_FLAGS_RELEASE
@@ -25,7 +25,6 @@ if( OpenCV_STATIC )
   endforeach()
 endif()
 
-if( OpenCV_FOUND )
   # Additional Include Directories
   include_directories( ${OpenCV_INCLUDE_DIRS} )
 
@@ -34,7 +33,6 @@ if( OpenCV_FOUND )
 
   # Additional Dependencies
   target_link_libraries( fastklt ${OpenCV_LIBS} )
-endif()
  
 
 

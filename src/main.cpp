@@ -142,7 +142,7 @@ int main(int argc, char** argv) {
 
     //OR
  
-    //char* ImageFile = "PATH_TO_IMAGE";
+    //char* ImageFile = "signal-2023-12-14-212155_003.jpeg";
     
     const int kDensity = 20;
     
@@ -150,7 +150,11 @@ int main(int argc, char** argv) {
     cv::Mat ImageColor, ImageGrayscale, ImageResult, ImageResultResized;	              
     ImageColor = imread(ImageFile, cv::IMREAD_COLOR);
     ImageGrayscale = imread(ImageFile, cv::IMREAD_GRAYSCALE);
-
+    if (ImageColor.empty() || ImageGrayscale.empty())
+    {
+        std::cerr << "Could not open or find the image: " << ImageFile << std::endl;
+        return -1;
+    }
     //Creating vector of Keypoints
     std::vector<cv::KeyPoint> Keypoints;
 

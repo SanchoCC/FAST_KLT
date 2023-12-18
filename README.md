@@ -42,11 +42,11 @@ If you using SHARED_LIBS, copy dll files from ..FAST_KLT/external/opencv/build/b
 
 # Examples of work FAST_Implementation with kDensity = 15
 
-Number of keypoints: 996, Detection time: 1643 microseconds
+Number of keypoints: 1390, Detection time: 2167 microseconds
 
-![ResultImage](https://github.com/SanchoCC/FAST_KLT/assets/134946556/a6334f53-25ad-47f0-a6f1-9ceb6ffe6730)
+![ResultImage](https://github.com/SanchoCC/FAST_KLT/assets/134946556/7c3b7492-a0c8-4c87-8e21-261cfbdd6b07)
 
-Number of keypoints: 13344, Detection time: 16969 microseconds
+Number of keypoints: 17249, Detection time: 20349 microseconds
 
-![ResultImage](https://github.com/SanchoCC/FAST_KLT/assets/134946556/6079174e-d877-443f-a353-b32d68abe7a8)
+![ResultImage](https://github.com/SanchoCC/FAST_KLT/assets/134946556/ed80e4dc-fd30-4680-a466-675bee9d0e75)
 

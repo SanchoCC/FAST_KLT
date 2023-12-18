@@ -8,11 +8,11 @@ int main(int argc, char** argv) {
 
     //Image file  
 
-    //char* ImageFile = argv[1];
+    char* ImageFile = argv[1];
 
     //OR
  
-    char* ImageFile = "signal-2023-12-14-212155_002.jpeg";
+    //char* ImageFile = "signal-2023-12-14-212155_002.jpeg";
     
     const int kDensity = 15;
     

@@ -142,9 +142,9 @@ int main(int argc, char** argv) {
 
     //OR
  
-    //char* ImageFile = "signal-2023-12-14-212155_003.jpeg";
+    //char* ImageFile = "YOUR_PATH";
     
-    const int kDensity = 20;
+    const int kDensity = 15;
     
     // Mat objects for storing data 
     cv::Mat ImageColor, ImageGrayscale, ImageResult, ImageResultResized;	              

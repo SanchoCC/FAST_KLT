@@ -26,8 +26,8 @@ void FAST_Implementaion(cv::Mat Image, std::vector<cv::KeyPoint>& keypoints, int
     {
         for (int cols = 3; cols < Image.cols - 3; ++cols)
         {
-            int LowerIntensity = 0;
-            int HigherIntensity = 0;
+            uint8_t LowerIntensity = 0;
+            uint8_t HigherIntensity = 0;
 
             uint8_t PixelIntensity = Image.at<uint8_t>(rows, cols);
             int16_t PixelIntensityLowerBound = PixelIntensity - Density;
@@ -111,20 +111,19 @@ void FAST_Implementaion(cv::Mat Image, std::vector<cv::KeyPoint>& keypoints, int
                 // Checking if at least 12 pixels are going in a row
                 for (int i = 0; i < PixelCircle.size(); ++i)
                 {
-                    uint8_t IntensityValue = PixelCircle[i];
-                    if (IntensityValue < PixelIntensityLowerBound)
+                    if (PixelCircle[i] < PixelIntensityLowerBound)
                     {
                         ++LowerIntensity;
-                        if (HigherIntensity > 0 && i > 3)
+                        if (i > 4 && HigherIntensity > 0)
                         {
                             break;
                         }
                         HigherIntensity = 0;
                     }
-                    else if (IntensityValue > PixelIntensityUpperBound)
+                    else if (PixelCircle[i] > PixelIntensityUpperBound)
                     {
                         ++HigherIntensity;
-                        if (LowerIntensity > 0 && i > 3)
+                        if (i > 4 && LowerIntensity > 0)
                         {
                             break;
                         }

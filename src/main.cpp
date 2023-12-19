@@ -4,6 +4,8 @@
 #include <array>
 #include <myalgorithms.h>
 
+const int kDensity = 30;
+
 int main(int argc, char** argv) {
 
     //Image file  
@@ -12,10 +14,12 @@ int main(int argc, char** argv) {
 
     //OR
  
-    //char* ImageFile = "signal-2023-12-14-212155_002.jpeg";
+    //char* ImageFile = "YOUR_IMAGE_PATH";
     
-    const int kDensity = 15;
-    
+    if (kDensity < std::numeric_limits<int16_t>::min() || kDensity > std::numeric_limits<int16_t>::max()-std::numeric_limits<uint8_t>::max()) 
+    {
+    std::cerr << "kDensity is outside the range" << std::endl;
+    }
     // Mat objects for storing data 
     cv::Mat ImageColor, ImageGrayscale, ImageResult, ImageResultResized;	              
     ImageColor = imread(ImageFile, cv::IMREAD_COLOR);
@@ -30,7 +34,6 @@ int main(int argc, char** argv) {
 
     // Measuring execution time
     auto StartTime = std::chrono::high_resolution_clock::now();
-
     // Calling FAST
     FAST_Implementaion(ImageGrayscale, Keypoints, kDensity);
 
